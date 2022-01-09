@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 122115231}
   - component: {fileID: 122115230}
   m_Layer: 5
-  m_Name: Skin2
+  m_Name: Skin2Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -748,7 +748,7 @@ GameObject:
   - component: {fileID: 384686056}
   - component: {fileID: 384686055}
   m_Layer: 5
-  m_Name: Rewards Text (1)
+  m_Name: Chapter1RewardsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2765,7 +2765,7 @@ GameObject:
   - component: {fileID: 1857641552}
   - component: {fileID: 1857641551}
   m_Layer: 5
-  m_Name: Skin1
+  m_Name: Skin1Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2991,7 +2991,7 @@ GameObject:
   - component: {fileID: 2086870644}
   - component: {fileID: 2086870643}
   m_Layer: 5
-  m_Name: Rewards Text
+  m_Name: TutorialRewardsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

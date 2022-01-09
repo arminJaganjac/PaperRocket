@@ -48,3 +48,7 @@ MonoBehaviour:
   score: 0
   currentScene: 0
   isTimerStarted: 0
+  fuelLevel: 10
+  fuelSlider: {fileID: 0}
+  player: {fileID: 1218791440479011203, guid: 0b3e7f7053d7183489fb77f600bbbc27, type: 3}
+  isFuelEmpty: 0

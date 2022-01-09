@@ -17,9 +17,13 @@ public class PlayerAcceleration : MonoBehaviour
     {
         levelManager = FindObjectOfType<LevelManager>();
         rb = GetComponent<Rigidbody2D>();
+        audiox = GetComponent<AudioSource>();
+    }
+
+    void Start()
+    {
         flame = GameObject.Find("Flame");
         flameParticleSystem = flame.GetComponent<ParticleSystem>();
-        audiox = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -29,7 +33,6 @@ public class PlayerAcceleration : MonoBehaviour
 
     public void AccelerateButton(int value)
     {
-        // git test
         moveSpeed = value;
     }
 

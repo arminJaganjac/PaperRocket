@@ -15,12 +15,14 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] public float fuelLevel = 10f;
     [SerializeField] Slider fuelSlider;
+    [SerializeField] GameObject player;
 
     public bool isFuelEmpty;
 
-    void Start()
+    void Awake()
     {
         fuelSlider.value = fuelLevel;
+        SetSkin();
     }
 
     void Update()
@@ -75,5 +77,22 @@ public class LevelManager : MonoBehaviour
     {
         isTimerStarted = true;
         Debug.Log(isTimerStarted);
+    }
+
+    void SetSkin()
+    {
+
+        switch (PlayerPrefs.GetInt("Skin", 0))
+        {
+            case 0:
+                player.transform.Find("Skin0").gameObject.SetActive(true);
+                break;
+            case 1:
+                player.transform.Find("Skin1").gameObject.SetActive(true);
+                break;
+            case 2:
+                player.transform.Find("Skin2").gameObject.SetActive(true);
+                break;
+        }
     }
 }
