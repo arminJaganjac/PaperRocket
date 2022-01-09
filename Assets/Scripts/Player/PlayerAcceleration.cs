@@ -29,6 +29,7 @@ public class PlayerAcceleration : MonoBehaviour
 
     public void AccelerateButton(int value)
     {
+        // git test
         moveSpeed = value;
     }
 
