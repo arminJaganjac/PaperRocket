@@ -10,7 +10,7 @@ public class ScoreScreen : MonoBehaviour
     [SerializeField] TMP_Text lastScoreText;
     [SerializeField] TMP_Text highScoreText;
 
-    List<string> randomScoreText = new List<string> {"You did so well!", "Great result!", "Awesome!", "Wow!", "Very nice!", "Sooo good!"};
+    List<string> randomScoreText = new List<string> { "You did so well!", "Great result!", "Awesome!", "Wow!", "Very nice!", "Sooo good!" };
 
     LevelExit levelExit;
     LevelManager levelManager;
@@ -26,24 +26,27 @@ public class ScoreScreen : MonoBehaviour
         scoreScreen.SetActive(true);
     }
 
-    public void SetLastScoreText(int lastScore)
+    public void SetLastScoreText(float lastScore)
     {
-        lastScoreText.SetText("Last Score:\n" + lastScore);
+        string lastScoreString = lastScore.ToString("F2");
+        lastScoreText.SetText("Last Score:\n" + lastScoreString);
     }
 
     public void SetHighScoreText()
     {
-        highScoreText.SetText("High Score:\n" + PlayerPrefs.GetInt(levelExit.activeScene.name));
+        highScoreText.SetText("High Score:\n" + PlayerPrefs.GetFloat(levelExit.activeScene.name).ToString("F2"));
     }
 
     public void SetCongratulationText()
     {
-        if (levelManager.score < PlayerPrefs.GetInt(levelExit.activeScene.name) || PlayerPrefs.GetInt(levelExit.activeScene.name) == 0)
+        if (levelManager.passedTime < PlayerPrefs.GetFloat(levelExit.activeScene.name) || PlayerPrefs.GetFloat(levelExit.activeScene.name, 0) == 0)
         {
+            Debug.Log("1");
             congratulationText.SetText("New High Score!");
         }
         else
         {
+            Debug.Log("2");
             congratulationText.SetText(randomScoreText[Random.Range(0, randomScoreText.Count)]);
         }
     }

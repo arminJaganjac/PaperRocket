@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelExit : MonoBehaviour
 {
+    int convertedScore;
     public bool isLevelFinished;
 
     GameObject gameObjects;
@@ -27,9 +28,9 @@ public class LevelExit : MonoBehaviour
         isLevelFinished = true;
         Time.timeScale = 0f;
         DisableGameObjects();
-        SetHighScore();
         scoreScreen.SetCongratulationText();
-        scoreScreen.SetLastScoreText(levelManager.score);
+        SetHighScore();
+        scoreScreen.SetLastScoreText(levelManager.passedTime);
         scoreScreen.SetHighScoreText();
         if (AdManager.Instance.timePlayingTimer <= 0)
         {
@@ -46,9 +47,9 @@ public class LevelExit : MonoBehaviour
 
     void SetHighScore()
     {
-        if (levelManager.score < PlayerPrefs.GetInt(activeScene.name) || PlayerPrefs.GetInt(activeScene.name) == 0)
+        if (levelManager.passedTime < PlayerPrefs.GetFloat(activeScene.name) || PlayerPrefs.GetFloat(activeScene.name) == 0)
         {
-            PlayerPrefs.SetInt(activeScene.name, levelManager.score);
+            PlayerPrefs.SetFloat(activeScene.name, levelManager.passedTime);
         }
     }
 }

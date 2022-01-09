@@ -9,6 +9,8 @@ public class PlayerDeath : MonoBehaviour
     LevelManager levelManager;
     Rigidbody2D rb;
 
+    public static bool isDead;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -17,7 +19,7 @@ public class PlayerDeath : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        crash.transform.parent = null;
+        isDead = true;
         crash.Play();
         if (AdManager.Instance.timePlayingTimer <= 0)
         {
@@ -27,14 +29,21 @@ public class PlayerDeath : MonoBehaviour
         levelManager.fuelLevel = 10f;
         levelManager.passedTime = 0;
         levelManager.isTimerStarted = false;
+        PlayerVelocityZero();
         Invoke(nameof(ResetPlayerPosition), 0.8f);
     }
 
     void ResetPlayerPosition()
     {
+        PlayerVelocityZero();
         rb.transform.position = new Vector3(0, 0, 0);
+        PlayerRotation.rotation = -90;
+        isDead = false;
+    }
+
+    void PlayerVelocityZero()
+    {
         rb.velocity = new Vector2(0, 0);
         rb.angularVelocity = 0;
-        rb.transform.rotation = Quaternion.Euler(0, 0, -90);
     }
 }

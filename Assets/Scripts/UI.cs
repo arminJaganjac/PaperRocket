@@ -25,7 +25,7 @@ public class UI : MonoBehaviour
 
     void Update()
     {
-        scoreText.SetText(levelManager.score.ToString());
+        scoreText.SetText(levelManager.passedTime.ToString("F1"));
         slider.value = levelManager.fuelLevel;
     }
 

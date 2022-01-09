@@ -7,9 +7,6 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     public float passedTime;
-    int scoreMultiplier = 10;
-
-    public int score;
     public int currentScene;
     public bool isTimerStarted;
 
@@ -21,7 +18,10 @@ public class LevelManager : MonoBehaviour
 
     void Awake()
     {
-        fuelSlider.value = fuelLevel;
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            fuelSlider.value = fuelLevel;
+        }
         SetSkin();
     }
 
@@ -31,7 +31,6 @@ public class LevelManager : MonoBehaviour
         {
             passedTime += Time.deltaTime;
         }
-        CalculateScore();
     }
 
     void FixedUpdate()
@@ -68,15 +67,9 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void CalculateScore()
-    {
-        score = Mathf.RoundToInt(passedTime * scoreMultiplier);
-    }
-
     public void StartTime()
     {
         isTimerStarted = true;
-        Debug.Log(isTimerStarted);
     }
 
     void SetSkin()
