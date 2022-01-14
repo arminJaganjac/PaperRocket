@@ -10,6 +10,7 @@ public class UI : MonoBehaviour
     [SerializeField] TMP_Text scoreText;
     [SerializeField] GameObject uIPanel;
     [SerializeField] Slider slider;
+    [SerializeField] Image accelerationButton;
 
     LevelManager levelManager;
 
@@ -32,6 +33,10 @@ public class UI : MonoBehaviour
     void ActivateUIPanel()
     {
         uIPanel.SetActive(true);
+        if (levelManager.isTutorial)
+        {
+            accelerationButton.enabled = false;
+        }
     }
 
     public void LoadMainMenu()

@@ -8,11 +8,13 @@ public class PlayerDeath : MonoBehaviour
 
     LevelManager levelManager;
     Rigidbody2D rb;
+    PlayerRotation playerRotation;
 
     public static bool isDead;
 
     void Awake()
     {
+        playerRotation = GetComponentInParent<PlayerRotation>();
         rb = GetComponent<Rigidbody2D>();
         levelManager = FindObjectOfType<LevelManager>();
     }
@@ -37,7 +39,7 @@ public class PlayerDeath : MonoBehaviour
     {
         PlayerVelocityZero();
         rb.transform.position = new Vector3(0, 0, 0);
-        PlayerRotation.rotation = -90;
+        playerRotation.rotation = -90;
         isDead = false;
     }
 

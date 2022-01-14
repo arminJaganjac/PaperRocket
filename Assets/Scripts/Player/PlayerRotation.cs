@@ -7,7 +7,7 @@ public class PlayerRotation : MonoBehaviour
 {
     [SerializeField] float rotationSpeed = 400f;
     float rotationDirection;
-    public static float rotation = -90f;
+    public float rotation = -90f;
 
     Rigidbody2D rb;
 

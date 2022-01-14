@@ -41,12 +41,10 @@ public class ScoreScreen : MonoBehaviour
     {
         if (levelManager.passedTime < PlayerPrefs.GetFloat(levelExit.activeScene.name) || PlayerPrefs.GetFloat(levelExit.activeScene.name, 0) == 0)
         {
-            Debug.Log("1");
             congratulationText.SetText("New High Score!");
         }
         else
         {
-            Debug.Log("2");
             congratulationText.SetText(randomScoreText[Random.Range(0, randomScoreText.Count)]);
         }
     }

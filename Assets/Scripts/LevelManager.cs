@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
     public float passedTime;
     public int currentScene;
     public bool isTimerStarted;
+    public bool isTutorial;
 
     [SerializeField] public float fuelLevel = 10f;
     [SerializeField] Slider fuelSlider;
