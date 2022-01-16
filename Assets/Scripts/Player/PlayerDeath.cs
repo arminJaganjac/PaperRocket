@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDeath : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class PlayerDeath : MonoBehaviour
     Rigidbody2D rb;
     PlayerRotation playerRotation;
 
-    public static bool isDead;
+    public static bool isDead = false;
 
     void Awake()
     {
@@ -23,29 +24,22 @@ public class PlayerDeath : MonoBehaviour
     {
         isDead = true;
         crash.Play();
+        Time.timeScale = 0f;
         if (AdManager.Instance.timePlayingTimer <= 0)
         {
             AdManager.Instance.ShowAd();
             AdManager.Instance.timePlayingTimer = 300f;
         }
+        StartCoroutine(nameof(ResetScene));
+    }
+
+    IEnumerator ResetScene()
+    {
+        yield return new WaitForSecondsRealtime(0.7f);
         levelManager.fuelLevel = 10f;
         levelManager.passedTime = 0;
         levelManager.isTimerStarted = false;
-        PlayerVelocityZero();
-        Invoke(nameof(ResetPlayerPosition), 0.8f);
-    }
-
-    void ResetPlayerPosition()
-    {
-        PlayerVelocityZero();
-        rb.transform.position = new Vector3(0, 0, 0);
-        playerRotation.rotation = -90;
-        isDead = false;
-    }
-
-    void PlayerVelocityZero()
-    {
-        rb.velocity = new Vector2(0, 0);
-        rb.angularVelocity = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
     }
 }

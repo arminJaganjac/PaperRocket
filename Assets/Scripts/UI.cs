@@ -33,10 +33,6 @@ public class UI : MonoBehaviour
     void ActivateUIPanel()
     {
         uIPanel.SetActive(true);
-        if (levelManager.isTutorial)
-        {
-            accelerationButton.enabled = false;
-        }
     }
 
     public void LoadMainMenu()
