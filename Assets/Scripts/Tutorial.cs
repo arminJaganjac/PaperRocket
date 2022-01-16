@@ -59,32 +59,32 @@ public class Tutorial : MonoBehaviour
         {
             case 0:
                 tutorialText.SetText(tutorialTextArray[0]);
-                Debug.Log("Case 0");
+                // Debug.Log("Case 0");
                 break;
             case 1:
                 tutorialText.SetText(tutorialTextArray[1]);
-                Debug.Log("Case 1");
+                // Debug.Log("Case 1");
                 fuelSlider.SetActive(true);
                 continueText.SetActive(true);
                 break;
             case 2:
                 tutorialText.SetText(tutorialTextArray[2]);
-                Debug.Log("Case 2");
+                // Debug.Log("Case 2");
                 levelManager.passedTime = 0f;
                 score.SetActive(true);
                 break;
             case 3:
                 tutorialText.SetText(tutorialTextArray[3]);
-                Debug.Log("Case 3");
+                // Debug.Log("Case 3");
                 continueText.SetActive(false);
                 accelerateButton.enabled = true;
                 break;
             case 4:
                 tutorialText.SetText(tutorialTextArray[4]);
-                Debug.Log("Case 4");
+                // Debug.Log("Case 4");
                 break;
             default:
-                Debug.Log("Case default");
+                // Debug.Log("Case default");
                 tutorialImage.SetActive(false);
                 break;
         }

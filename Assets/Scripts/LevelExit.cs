@@ -11,12 +11,13 @@ public class LevelExit : MonoBehaviour
     GameObject gameObjects;
     ScoreScreen scoreScreen;
     LevelManager levelManager;
-
+    PlayfabManager playfabManager;
 
     public Scene activeScene;
 
     private void Awake()
     {
+        playfabManager = FindObjectOfType<PlayfabManager>();
         levelManager = FindObjectOfType<LevelManager>();
         gameObjects = GameObject.FindGameObjectWithTag("GameObjects");
         scoreScreen = FindObjectOfType<ScoreScreen>();
@@ -27,16 +28,17 @@ public class LevelExit : MonoBehaviour
     {
         isLevelFinished = true;
         Time.timeScale = 0f;
-        DisableGameObjects();
         scoreScreen.SetCongratulationText();
+        convertedScore = Mathf.RoundToInt(levelManager.passedTime * 100f);
         SetHighScore();
         scoreScreen.SetLastScoreText(levelManager.passedTime);
-        scoreScreen.SetHighScoreText();
+        DisableGameObjects();
         if (AdManager.Instance.timePlayingTimer <= 0)
         {
             AdManager.Instance.ShowAd();
             AdManager.Instance.timePlayingTimer = 300f;
         }
+        playfabManager.GetLeaderboard();
         scoreScreen.EnableScoreScreen();
     }
 
@@ -47,6 +49,7 @@ public class LevelExit : MonoBehaviour
 
     void SetHighScore()
     {
+        playfabManager.SendLeaderboard(convertedScore, activeScene.name);
         if (levelManager.passedTime < PlayerPrefs.GetFloat(activeScene.name) || PlayerPrefs.GetFloat(activeScene.name) == 0)
         {
             PlayerPrefs.SetFloat(activeScene.name, levelManager.passedTime);

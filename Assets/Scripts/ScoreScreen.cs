@@ -8,7 +8,6 @@ public class ScoreScreen : MonoBehaviour
     [SerializeField] GameObject scoreScreen;
     [SerializeField] public TMP_Text congratulationText;
     [SerializeField] TMP_Text lastScoreText;
-    [SerializeField] TMP_Text highScoreText;
 
     List<string> randomScoreText = new List<string> { "You did so well!", "Great result!", "Awesome!", "Wow!", "Very nice!", "Sooo good!" };
 
@@ -32,16 +31,11 @@ public class ScoreScreen : MonoBehaviour
         lastScoreText.SetText("Last Score:\n" + lastScoreString);
     }
 
-    public void SetHighScoreText()
-    {
-        highScoreText.SetText("High Score:\n" + PlayerPrefs.GetFloat(levelExit.activeScene.name).ToString("F2"));
-    }
-
     public void SetCongratulationText()
     {
         if (levelManager.passedTime < PlayerPrefs.GetFloat(levelExit.activeScene.name) || PlayerPrefs.GetFloat(levelExit.activeScene.name, 0) == 0)
         {
-            congratulationText.SetText("New High Score!");
+            congratulationText.SetText("New Personal Record!");
         }
         else
         {

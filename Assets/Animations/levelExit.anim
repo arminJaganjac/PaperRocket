@@ -166,4 +166,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 2
+    functionName: playfabManager.GetLeaderboard
+    data: 
+    objectReferenceParameter: {fileID: 4444728769874860832, guid: cd2669c066b20e44bac7a57c090d07ec, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

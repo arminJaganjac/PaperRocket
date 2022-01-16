@@ -15,7 +15,7 @@ MonoBehaviour:
   TitleId: 3DAD3
   DeveloperSecretKey: HY64MAU7IDBI9ZJACSAYSKFGGM85XNPGRBQ5XYAZ9ZKQSB1NOF
   ProductionEnvironmentUrl: 
-  RequestType: 0
+  RequestType: 2
   DisableDeviceInfo: 0
   DisableFocusTimeCollection: 0
   RequestTimeout: 2000
