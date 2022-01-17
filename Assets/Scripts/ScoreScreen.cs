@@ -2,22 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using PlayFab.ClientModels;
+using UnityEngine.SceneManagement;
+using PlayFab;
 
 public class ScoreScreen : MonoBehaviour
 {
     [SerializeField] GameObject scoreScreen;
     [SerializeField] public TMP_Text congratulationText;
     [SerializeField] TMP_Text lastScoreText;
+    [SerializeField] GameObject rowPrefab;
+    [SerializeField] Transform rowsParent;
+    [SerializeField] GameObject personalBestRow;
 
     List<string> randomScoreText = new List<string> { "You did so well!", "Great result!", "Awesome!", "Wow!", "Very nice!", "Sooo good!" };
 
-    LevelExit levelExit;
-    LevelManager levelManager;
+    [SerializeField] LevelExit levelExit;
+    [SerializeField] LevelManager levelManager;
 
-    void Awake()
+    void Start()
     {
-        levelManager = FindObjectOfType<LevelManager>();
-        levelExit = FindObjectOfType<LevelExit>();
+        GetLeaderboard();
     }
 
     public void EnableScoreScreen()
@@ -41,5 +46,40 @@ public class ScoreScreen : MonoBehaviour
         {
             congratulationText.SetText(randomScoreText[Random.Range(0, randomScoreText.Count)]);
         }
+    }
+
+    void GetLeaderboard()
+    {
+        var request = new GetLeaderboardRequest
+        {
+            StatisticName = SceneManager.GetActiveScene().name,
+            StartPosition = 0,
+            MaxResultsCount = 10
+        };
+        PlayFabClientAPI.GetLeaderboard(request, OnLeaderboardGet, OnError);
+    }
+
+    void OnLeaderboardGet(GetLeaderboardResult result)
+    {
+        Debug.Log("Received leaderboard update");
+
+        foreach (var item in result.Leaderboard)
+        {
+            GameObject newGo = Instantiate(rowPrefab, rowsParent);
+            TMP_Text[] texts = newGo.GetComponentsInChildren<TMP_Text>();
+            texts[0].text = (item.Position + 1).ToString();
+            texts[1].text = item.DisplayName;
+            texts[2].text = (item.StatValue / 100f).ToString();
+        }
+
+        TMP_Text[] pbTexts = personalBestRow.GetComponentsInChildren<TMP_Text>();
+        pbTexts[0].text = "---";
+        pbTexts[1].text = PlayerPrefs.GetString("Username");
+        pbTexts[2].text = PlayerPrefs.GetFloat(SceneManager.GetActiveScene().name).ToString("F2");
+    }
+
+    void OnError(PlayFabError error)
+    {
+        Debug.Log(error.GenerateErrorReport());
     }
 }

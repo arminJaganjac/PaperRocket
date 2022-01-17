@@ -4893,7 +4893,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b72d0f9d0b154b45bb4bf3dc20b6c66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  adManager: {fileID: 5542951817170322304, guid: b5d06654847b0b54cb33de37102c2605, type: 3}
   isLevelFinished: 0
+  scoreScreen: {fileID: 0}
+  levelManager: {fileID: 0}
   activeScene:
     m_Handle: 0
