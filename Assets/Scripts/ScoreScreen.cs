@@ -76,7 +76,7 @@ public class ScoreScreen : MonoBehaviour
             TMP_Text[] texts = newGo.GetComponentsInChildren<TMP_Text>();
             texts[0].text = (item.Position + 1).ToString();
             texts[1].text = item.DisplayName;
-            texts[2].text = (item.StatValue / 100f).ToString();
+            texts[2].text = (item.StatValue / 100f).ToString("F2");
         }
     }
 

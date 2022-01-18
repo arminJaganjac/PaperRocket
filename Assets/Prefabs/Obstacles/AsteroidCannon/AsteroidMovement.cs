@@ -16,14 +16,10 @@ public class AsteroidMovement : MonoBehaviour
     void FixedUpdate()
     {
         transform.position += transform.up * moveSpeed * Time.fixedDeltaTime;
-        DestroyAsteroid();
     }
 
-    void DestroyAsteroid()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (rb.IsTouchingLayers(LayerMask.GetMask("Border")))
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 }

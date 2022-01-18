@@ -5,16 +5,19 @@ using UnityEngine;
 public class AsteroidCannon : MonoBehaviour
 {
     [SerializeField] GameObject asteroid;
+    [SerializeField] float firstShotDelay = 0f;
 
     Vector3 asteroidPosition;
 
     void Start()
     {
+        StartCoroutine(nameof(SingleShot));
         asteroidPosition = transform.position + transform.up * 1.5f;
     }
 
-    void SingleShot()
+    IEnumerator SingleShot(float firstShotDelay)
     {
+        yield return new WaitForSeconds(firstShotDelay);
         Instantiate(asteroid, asteroidPosition, transform.rotation);
     }
 }

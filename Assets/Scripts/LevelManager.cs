@@ -68,6 +68,13 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public void LoadScene(int buildIndex)
+    {
+        currentScene = buildIndex;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(buildIndex);
+    }
+
     public void StartTime()
     {
         isTimerStarted = true;
