@@ -22,7 +22,7 @@ public class ScoreScreen : MonoBehaviour
 
     void Start()
     {
-        GetLeaderboard();
+        RequestLeaderboards();
     }
 
     public void EnableScoreScreen()
@@ -48,8 +48,15 @@ public class ScoreScreen : MonoBehaviour
         }
     }
 
-    void GetLeaderboard()
+    void RequestLeaderboards()
     {
+        StartCoroutine(nameof(GetLeaderboard));
+        StartCoroutine(nameof(GetLeaderboardAroundPlayer));
+    }
+
+    IEnumerator GetLeaderboard()
+    {
+        yield return new WaitForSecondsRealtime(2f);
         var request = new GetLeaderboardRequest
         {
             StatisticName = SceneManager.GetActiveScene().name,
@@ -71,15 +78,32 @@ public class ScoreScreen : MonoBehaviour
             texts[1].text = item.DisplayName;
             texts[2].text = (item.StatValue / 100f).ToString();
         }
-
-        TMP_Text[] pbTexts = personalBestRow.GetComponentsInChildren<TMP_Text>();
-        pbTexts[0].text = "---";
-        pbTexts[1].text = PlayerPrefs.GetString("Username");
-        pbTexts[2].text = PlayerPrefs.GetFloat(SceneManager.GetActiveScene().name).ToString("F2");
     }
 
     void OnError(PlayFabError error)
     {
         Debug.Log(error.GenerateErrorReport());
+    }
+
+    IEnumerator GetLeaderboardAroundPlayer()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        var request = new GetLeaderboardAroundPlayerRequest
+        {
+            StatisticName = SceneManager.GetActiveScene().name,
+            MaxResultsCount = 1
+        };
+        PlayFabClientAPI.GetLeaderboardAroundPlayer(request, OnLeaderboardAroundPlayerGet, OnError);
+    }
+
+    void OnLeaderboardAroundPlayerGet(GetLeaderboardAroundPlayerResult result)
+    {
+        foreach (var item in result.Leaderboard)
+        {
+            TMP_Text[] pbTexts = personalBestRow.GetComponentsInChildren<TMP_Text>();
+            pbTexts[0].text = (item.Position + 1).ToString();
+            pbTexts[1].text = PlayerPrefs.GetString("Username");
+            pbTexts[2].text = PlayerPrefs.GetFloat(SceneManager.GetActiveScene().name).ToString("F2");
+        }
     }
 }
