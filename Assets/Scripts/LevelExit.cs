@@ -68,7 +68,7 @@ public class LevelExit : MonoBehaviour
             {
                 new StatisticUpdate {
                     StatisticName = leaderboardName,
-                    Value = score
+                    Value = score * -1
                 }
             }
         };

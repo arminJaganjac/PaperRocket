@@ -10,6 +10,7 @@ public class PlayerDeath : MonoBehaviour
     LevelManager levelManager;
     Rigidbody2D rb;
     PlayerRotation playerRotation;
+    [SerializeField] AudioSource audioSource;
 
     public static bool isDead = false;
 
@@ -24,6 +25,7 @@ public class PlayerDeath : MonoBehaviour
     {
         isDead = true;
         crash.Play();
+        audioSource.Play();
         Time.timeScale = 0f;
         if (AdManager.Instance.timePlayingTimer <= 0)
         {

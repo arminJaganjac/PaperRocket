@@ -18,7 +18,7 @@ public class AsteroidMovement : MonoBehaviour
         transform.position += transform.up * moveSpeed * Time.fixedDeltaTime;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         Destroy(gameObject);
     }

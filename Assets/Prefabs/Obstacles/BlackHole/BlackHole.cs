@@ -5,7 +5,6 @@ using UnityEngine;
 public class BlackHole : MonoBehaviour
 {
     [SerializeField] float rotationSpeed = 5f;
-    [SerializeField] float playerMass = 10f;
     [SerializeField] float blackHoleMass = 100f;
 
     float gravityStrength;
@@ -21,7 +20,7 @@ public class BlackHole : MonoBehaviour
 
     void Update()
     {
-        gravityStrength = playerMass * blackHoleMass / Mathf.Pow(GravityDistance().magnitude, 2);
+        gravityStrength = blackHoleMass / Mathf.Pow(GravityDistance().magnitude, 2);
     }
 
     void FixedUpdate()

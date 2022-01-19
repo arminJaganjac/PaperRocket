@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     public int currentScene;
     public bool isTimerStarted;
     public bool isTutorial;
+    public bool isLastLevel;
 
     [SerializeField] public float fuelLevel = 10f;
     [SerializeField] Slider fuelSlider;
@@ -58,7 +59,11 @@ public class LevelManager : MonoBehaviour
         currentScene++;
         Time.timeScale = 1f;
 
-        if (currentScene == SceneManager.sceneCountInBuildSettings)
+        if (isLastLevel)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else if (currentScene == SceneManager.sceneCountInBuildSettings)
         {
             SceneManager.LoadScene(0);
         }
@@ -73,6 +78,12 @@ public class LevelManager : MonoBehaviour
         currentScene = buildIndex;
         Time.timeScale = 1f;
         SceneManager.LoadScene(buildIndex);
+    }
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
     }
 
     public void StartTime()

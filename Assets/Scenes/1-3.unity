@@ -1046,6 +1046,14 @@ PrefabInstance:
       propertyPath: personalBestRow
       value: 
       objectReference: {fileID: 914246962}
+    - target: {fileID: 5912770014597818979, guid: 5fb869c1ac49fa045be3fe11c465577a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1027961808}
+    - target: {fileID: 5912770014597818979, guid: 5fb869c1ac49fa045be3fe11c465577a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadNextLevel
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fb869c1ac49fa045be3fe11c465577a, type: 3}
 --- !u!114 &914246961 stripped
@@ -1269,6 +1277,10 @@ PrefabInstance:
     - target: {fileID: 2444520528582950627, guid: 0927f50e4cfed84448581c327deff099, type: 3}
       propertyPath: isTutorial
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2444520528582950627, guid: 0927f50e4cfed84448581c327deff099, type: 3}
+      propertyPath: isLastLevel
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2444520528582950627, guid: 0927f50e4cfed84448581c327deff099, type: 3}
       propertyPath: isTimerStarted

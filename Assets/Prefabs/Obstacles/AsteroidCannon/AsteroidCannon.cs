@@ -11,7 +11,7 @@ public class AsteroidCannon : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(nameof(SingleShot));
+        StartCoroutine(SingleShot(firstShotDelay));
         asteroidPosition = transform.position + transform.up * 1.5f;
     }
 
