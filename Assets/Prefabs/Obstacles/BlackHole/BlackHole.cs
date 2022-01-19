@@ -30,7 +30,7 @@ public class BlackHole : MonoBehaviour
 
     void Rotate()
     {
-        transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+        transform.Rotate(0, 0, rotationSpeed * Time.fixedUnscaledDeltaTime);
     }
 
     void OnTriggerStay2D(Collider2D other)
