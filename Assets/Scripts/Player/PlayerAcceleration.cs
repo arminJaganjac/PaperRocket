@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerAcceleration : MonoBehaviour
 {
@@ -31,11 +32,26 @@ public class PlayerAcceleration : MonoBehaviour
         Accelerate();
     }
 
+    // takes touchscreen input
     public void AccelerateButton(int value)
     {
         moveSpeed = value;
     }
 
+    // For testing with keyboard
+    public void KeyboardAccelerate(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            moveSpeed = 1;
+        }
+        if (context.canceled)
+        {
+            moveSpeed = 0;
+        }
+    }
+
+    // adds force to the rb
     void Accelerate()
     {
         if (moveSpeed != 0 && !levelManager.isFuelEmpty)

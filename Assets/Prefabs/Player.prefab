@@ -4826,7 +4826,7 @@ GameObject:
   - component: {fileID: 2448765114077603428}
   - component: {fileID: 3036384808084358099}
   - component: {fileID: 1950849623920371136}
-  - component: {fileID: 1218791440479010942}
+  - component: {fileID: -4078597559419146688}
   - component: {fileID: 5162708220686502094}
   m_Layer: 0
   m_Name: Player
@@ -4946,7 +4946,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crash: {fileID: 8834932394041042076}
   audioSource: {fileID: 6144906546603179519}
---- !u!114 &1218791440479010942
+--- !u!114 &-4078597559419146688
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4958,8 +4958,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 4cc78f2cb00d9e04a99bd0989cd2e15d, type: 3}
-  m_NotificationBehavior: 0
+  m_Actions: {fileID: -944628639613478452, guid: 32345009b9a7571479aa0067b1d25ff0, type: 3}
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -4972,14 +4972,42 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 6070ec2b-ed0c-44b9-83ce-a83ac85b5a91
-    m_ActionName: Player/Rotate[/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2448765114077603428}
         m_TargetAssemblyTypeName: PlayerAcceleration, Assembly-CSharp
-        m_MethodName: Accelerate
+        m_MethodName: KeyboardAccelerate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1527555c-bfc8-4199-aaa6-15af15bc0dcd
+    m_ActionName: Player/Accelerate[/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3036384808084358099}
+        m_TargetAssemblyTypeName: PlayerRotation, Assembly-CSharp
+        m_MethodName: RotateLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e6c5d041-ba35-4a37-a059-96182762cec8
+    m_ActionName: Player/Rotate[/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3036384808084358099}
+        m_TargetAssemblyTypeName: PlayerRotation, Assembly-CSharp
+        m_MethodName: RotateRight
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4989,8 +5017,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: a2a47dd9-70ae-481b-a647-bd4860915622
-    m_ActionName: Player/Accelerate[/Keyboard/w,/XInputControllerWindows/buttonSouth]
+    m_ActionId: 960d2889-9eb4-4d14-994b-0a34d22b47be
+    m_ActionName: Player/Rotate Right[/Keyboard/d]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

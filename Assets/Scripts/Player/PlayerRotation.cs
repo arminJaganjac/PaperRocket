@@ -22,8 +22,33 @@ public class PlayerRotation : MonoBehaviour
         rb.transform.rotation = Quaternion.Euler(0, 0, rotation);
     }
 
+    // takes touchscreen input
     public void Rotate(int value)
     {
         rotationDirection = value;
+    }
+
+    public void RotateLeft(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            rotationDirection = 1;
+        }
+        if (context.canceled)
+        {
+            rotationDirection = 0;
+        }
+    }
+
+    public void RotateRight(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            rotationDirection = -1;
+        }
+        if (context.canceled)
+        {
+            rotationDirection = 0;
+        }
     }
 }
