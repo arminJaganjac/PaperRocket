@@ -8,7 +8,14 @@ public class UI : MonoBehaviour
 
     void Start()
     {
-        Invoke(nameof(ActivateUIPanel), 4f);
+        if (AdManager.isFirstRun)
+        {
+            Invoke(nameof(ActivateUIPanel), CameraHandler.zoomToPlayerDelay + 2f);
+        }
+        else
+        {
+            ActivateUIPanel();
+        }
     }
 
     void ActivateUIPanel()

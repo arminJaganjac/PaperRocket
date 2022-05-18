@@ -75,6 +75,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadScene(int buildIndex)
     {
+        AdManager.isFirstRun = true;
         currentScene = buildIndex;
         Time.timeScale = 1f;
         SceneManager.LoadScene(buildIndex);

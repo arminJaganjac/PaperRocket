@@ -43,6 +43,7 @@ public class PlayerAcceleration : MonoBehaviour
     {
         if (context.started)
         {
+            levelManager.StartTime();
             moveSpeed = 1;
         }
         if (context.canceled)

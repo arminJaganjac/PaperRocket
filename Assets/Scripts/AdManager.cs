@@ -13,6 +13,8 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
 
     public float timePlayingTimer = 300f;
 
+    public static bool isFirstRun = true;
+
 #if UNITY_ANDROID
     string gameId = "4544999";
 #elif UNITY_IOS

@@ -10,10 +10,12 @@ public class PlayerRotation : MonoBehaviour
     public float rotation = -90f;
 
     Rigidbody2D rb;
+    LevelManager levelManager;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        levelManager = FindObjectOfType<LevelManager>();
     }
 
     void FixedUpdate()
@@ -32,6 +34,7 @@ public class PlayerRotation : MonoBehaviour
     {
         if (context.started)
         {
+            levelManager.StartTime();
             rotationDirection = 1;
         }
         if (context.canceled)
@@ -44,6 +47,7 @@ public class PlayerRotation : MonoBehaviour
     {
         if (context.started)
         {
+            levelManager.StartTime();
             rotationDirection = -1;
         }
         if (context.canceled)

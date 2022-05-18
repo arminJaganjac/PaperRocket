@@ -25,6 +25,7 @@ public class LevelExit : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        AdManager.isFirstRun = true;
         isLevelFinished = true;
         Time.timeScale = 0f;
         scoreScreen.SetCongratulationText();

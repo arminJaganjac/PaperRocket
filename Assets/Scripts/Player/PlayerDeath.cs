@@ -24,6 +24,7 @@ public class PlayerDeath : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         isDead = true;
+        AdManager.isFirstRun = false;
         crash.Play();
         audioSource.Play();
         Time.timeScale = 0f;
