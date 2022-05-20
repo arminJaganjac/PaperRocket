@@ -44,6 +44,8 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         {
             timePlayingTimer -= Time.deltaTime;
         }
+
+
     }
 
     public void ShowAd()

@@ -35,6 +35,7 @@ public class PlayerAcceleration : MonoBehaviour
     // takes touchscreen input
     public void AccelerateButton(int value)
     {
+        Debug.Log("test");
         moveSpeed = value;
     }
 
