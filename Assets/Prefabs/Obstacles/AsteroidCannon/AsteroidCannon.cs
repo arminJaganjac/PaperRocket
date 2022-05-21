@@ -9,13 +9,17 @@ public class AsteroidCannon : MonoBehaviour
 
     Vector3 asteroidPosition;
 
+
+    // Set time between SingleShots in Animation
+
+
     void Start()
     {
-        StartCoroutine(SingleShot(firstShotDelay));
+        StartCoroutine("SingleShot");
         asteroidPosition = transform.position + transform.up * 1.5f;
     }
 
-    IEnumerator SingleShot(float firstShotDelay)
+    IEnumerator SingleShot()
     {
         yield return new WaitForSeconds(firstShotDelay);
         Instantiate(asteroid, asteroidPosition, transform.rotation);
